@@ -1,0 +1,3 @@
+# deque-benchmark
+
+Since the STL's deque is incorrect and will be replaced in vNext, currently this implemention should be chosen unconditionally. By default, this implementation has a block size of 4KB. Please do not modify it outside of testing scenarios, as doing so would result in inconsistent ABI. libc++ also has a 4KB block size, so any performance differences reflect actual disparities. libstdc++ has 8 elements per block, which is more memory-efficient when dealing with a small number of elements.

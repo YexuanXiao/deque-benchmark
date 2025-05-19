@@ -1,0 +1,6 @@
+[submodule "benchmark"]
+	path = benchmark
+	url = https://github.com/google/benchmark.git
+[submodule "deque"]
+	path = deque
+	url = https://github.com/YexuanXiao/deque.git
