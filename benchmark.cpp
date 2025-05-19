@@ -5,6 +5,12 @@
 #if defined(TEST_STD)
 #include <deque>
 #endif
+#if defined(__GLIBCXX__)
+#define BIZWEN_DEQUE_USE_GLIBCXX_BLOCK
+#endif
+#if defined(_LIBCPP_VERSION)
+#define BIZWEN_DEQUE_USE_LIBCPP_BLOCK
+#endif
 #include "deque/deque.hpp"
 
 template<typename T>
