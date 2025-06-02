@@ -7,10 +7,9 @@
 #else
 #include "deque/deque.hpp"
 #endif
+
 #if defined(__GLIBCXX__)
-#define BIZWEN_DEQUE_USE_GLIBCXX_BLOCK
-#elif defined(_LIBCPP_VERSION)
-#define BIZWEN_DEQUE_USE_LIBCPP_BLOCK
+#define BIZWEN_DEQUE_BLOCK_ELEMENTS 8uz
 #endif
 
 template <typename T>
@@ -280,7 +279,7 @@ void emplace_back_empty(benchmark::State &state)
         Deque<T, std::allocator<T>> d{};
         for (std::size_t i = 0uz; i != Length; ++i)
         {
-            auto &&res = d.emplace_back(i);
+            auto &&res = d.emplace_back(static_cast<int>(i));
             benchmark::DoNotOptimize(res);
         }
     }
@@ -294,7 +293,7 @@ void emplace_front_empty(benchmark::State &state)
         Deque<T, std::allocator<T>> d{};
         for (std::size_t i = 0uz; i != Length; ++i)
         {
-            auto &&res = d.emplace_front(i);
+            auto &&res = d.emplace_front(static_cast<int>(i));
             benchmark::DoNotOptimize(res);
         }
     }
@@ -311,7 +310,7 @@ void emplace_back(benchmark::State &state)
         state.ResumeTiming();
         for (std::size_t i = 0uz; i != Length; ++i)
         {
-            auto &&res = d.emplace_back(i);
+            auto &&res = d.emplace_back(static_cast<int>(i));
             benchmark::DoNotOptimize(res);
         }
     }
@@ -328,7 +327,7 @@ void emplace_front(benchmark::State &state)
         state.ResumeTiming();
         for (std::size_t i = 0uz; i != Length; ++i)
         {
-            auto &&res = d.emplace_front(i);
+            auto &&res = d.emplace_front(static_cast<int>(i));
             benchmark::DoNotOptimize(res);
         }
     }
